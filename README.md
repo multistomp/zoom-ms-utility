@@ -1,17 +1,12 @@
-##########################################
+## This is a fork of the original zoom-ms-utility to add support for custom firmware
 
-THIS IS A FORK OF THE ORIGINAL ZOOM-MS-UTILITY TO ADD CUSTOM FIRMWARE SUPPORT.
+Just like the original, you can [use this forked version as a web editor](https://multistomp.github.io/zoom-ms-utility/)
 
-You can use it in a web editor here: https://multistomp.github.io/zoom-ms-utility/
-
-You can find the original version here: https://github.com/g200kg/zoom-ms-utility
-And the orginal web editor is here: https://g200kg.github.io/zoom-ms-utility/
+You can find the [original version here](https://github.com/g200kg/zoom-ms-utility) and you can find the [orginal web editor here](https://g200kg.github.io/zoom-ms-utility/).
 
 The original readme file continues below...
 
-##########################################
-
-# zoom-ms-utility
+## zoom-ms-utility
 Online Zoom MS-50G/MS-60B/MS-70CDR multi stomp patch editor.
 
 This is a patch utility for the ZOOM MS - 50G / 60B / 70 CDR MultiStomp guitar pedal which runs on the chrome browser.  
