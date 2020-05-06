@@ -2390,14 +2390,22 @@ function MidiIf(ma){
       }
       var el=document.getElementById("e_"+id);
       if(el){
-        if(v==0||v>this.version){
-          effectlist[id].install=-2;
-          document.getElementById("e_"+id).classList.add("notinstall");
-        }
-        else if(this.devid!=0x58){
-          effectlist[id].install=1;
-          document.getElementById("e_"+id).classList.add("install");
-        }
+		var custfirm = document.getElementById ("custfirm").checked;
+		if(custfirm){
+			if(v>this.version){
+				effectlist[id].install=-2;
+				document.getElementById("e_"+id).classList.add("notinstall");
+			}
+		} else {
+			if(v==0||v>this.version){
+			effectlist[id].install=-2;
+			document.getElementById("e_"+id).classList.add("notinstall");
+			}
+			else if(this.devid!=0x58){
+				effectlist[id].install=1;
+				document.getElementById("e_"+id).classList.add("install");
+			}
+		}
       }
     }
   }
@@ -2451,6 +2459,12 @@ function MidiIf(ma){
             ef.param[7].max=gampcab[(v>=3)?1:0].max;
             ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
           }
+		  if(custfirm){
+			if(ef.group=="AMP" && (ef.ver&0xf0)){
+				ef.param[7].max=bampcab[(v>=2)?1:0].max;
+				ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
+			}
+		  }
         }
         break;
       case 0x5f:
@@ -2458,10 +2472,21 @@ function MidiIf(ma){
         this.devstr="60b";
         this.instSet();
         document.getElementById("device").innerHTML="MS-60B";
-        document.getElementById("effects").rows[4].style.display="none";
-        document.getElementById("effects").rows[5].style.display="none";
+		if(custfirm){
+			document.getElementById("effects").rows[4].style.display="";
+			document.getElementById("effects").rows[5].style.display="";
+		} else {
+			document.getElementById("effects").rows[4].style.display="none";
+			document.getElementById("effects").rows[5].style.display="none";
+		}
         for(var id in effectlist){
           var ef=effectlist[id];
+		  if(custfirm){
+			if(ef.group=="AMP" && (ef.ver&0xf)){
+				ef.param[7].max=gampcab[(v>=3)?1:0].max;
+				ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
+			}
+		  }
           if(ef.group=="AMP" && (ef.ver&0xf0)){
             ef.param[7].max=bampcab[(v>=2)?1:0].max;
             ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
@@ -2475,9 +2500,28 @@ function MidiIf(ma){
         document.getElementById("device").innerHTML="MS-70CDR";
         document.getElementById("effects").rows[4].style.display="";
         document.getElementById("effects").rows[5].style.display="";
+		if(custfirm){
+		  for(var id in effectlist){
+			var ef=effectlist[id];
+			if(ef.group=="AMP" && (ef.ver&0xf)){
+				ef.param[7].max=gampcab[(v>=3)?1:0].max;
+				ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
+			}
+			if(ef.group=="AMP" && (ef.ver&0xf0)){
+				ef.param[7].max=bampcab[(v>=2)?1:0].max;
+				ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
+			}
+		  }
+        }
         break;
       }
-      inst.ShowAll(false);
+	  var custfirm = document.getElementById ("custfirm").checked;
+	  if(custfirm){
+		inst.ShowAll(true);
+		document.getElementById("showall").checked = true;
+	  } else {
+		inst.ShowAll(false);
+	  }
       document.getElementById("firmver").innerHTML=v;
     }
     else if(midirecv.indexOf(this.sysexhead+"28")==0){
@@ -4115,9 +4159,15 @@ function InstallChecker(){
     for(id in effectlist){
       var el=document.getElementById("e_"+id);
       if(el){
-        if(f)
+        if(f){
           el.style.display="inline-block";
-        else{
+        } else if(custfirm){
+          var ef=effectlist[id];
+          if(ef.install>=0)
+            el.style.display="inline-block";
+          else
+            el.style.display="none";
+		} else {
           var ef=effectlist[id];
           if(ef.install>=-1)
             el.style.display="inline-block";
@@ -5446,6 +5496,9 @@ webaudio-switch{
       </p>
       <button onclick="document.getElementById('splashbase').style.display='none';Scan()" style="width:150px;height:40px" title="Start Patch Editor">START</button>
       <button onclick="Usage()" style="width:150px;height:40px" title="How to use this patch editor">How To Use</button>
+	  <p>
+	  <input type="checkbox" onchange="" style="width:16px" id="custfirm"/><label for="custfirm" style="font-size:16px">My Zoom has custom firmware</label>
+	  </p>
     </div>
   </div>
 
