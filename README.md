@@ -1,3 +1,16 @@
+##########################################
+
+THIS IS A FORK OF THE ORIGINAL ZOOM-MS-UTILITY TO ADD CUSTOM FIRMWARE SUPPORT.
+
+You can use it in a web editor here: https://multistomp.github.io/zoom-ms-utility/
+
+You can find the original version here: https://github.com/g200kg/zoom-ms-utility
+And the orginal web editor is here: https://g200kg.github.io/zoom-ms-utility/
+
+The original readme file continues below...
+
+##########################################
+
 # zoom-ms-utility
 Online Zoom MS-50G/MS-60B/MS-70CDR multi stomp patch editor.
 
