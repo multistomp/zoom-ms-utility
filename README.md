@@ -1,12 +1,17 @@
 ## This is a fork of the original zoom-ms-utility to add support for custom firmware
 
-Just like the original, you can [use this forked version as a web editor](https://multistomp.github.io/zoom-ms-utility/)
+Just like the original, you can [open this version in your browser](https://multistomp.github.io/zoom-ms-utility/) and edit your pedal's settings.
 
+### Known issues
+* If you don't have all the Amp models installed, you will get some odd behaviour when setting the Cab for the Amp in the Utility. When the Utility tries to set a Cab that doesn't exist on the Pedal, the Pedal will set the Cab to 'None'. Recommend using the Pedal's knobs to set your Cab in the Amp sims, unless you have all the Amps installed. The proper way to fix this would be to scan the Pedal for what Amps are installed and then limit the Cab selection to those Amps, but that is beyond my skill level.
+* Using any of the 17 updated bass effects from the B1Xon/B1on (which are not found on the MS-60B) is not supported. [See this spreadsheet for details](https://docs.google.com/spreadsheets/d/1BDs6DJQ8sOdphMpYnsSdE93XV1XclFTzD217144fj5w/edit#gid=0).
+
+### Original version
 You can find the [original version here](https://github.com/g200kg/zoom-ms-utility) and you can find the [orginal web editor here](https://g200kg.github.io/zoom-ms-utility/).
 
 The original readme file continues below...
 
-## zoom-ms-utility
+## zoom-ms-utility original readme file
 Online Zoom MS-50G/MS-60B/MS-70CDR multi stomp patch editor.
 
 This is a patch utility for the ZOOM MS - 50G / 60B / 70 CDR MultiStomp guitar pedal which runs on the chrome browser.  
