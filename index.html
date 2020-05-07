@@ -2459,6 +2459,7 @@ function MidiIf(ma){
             ef.param[7].max=gampcab[(v>=3)?1:0].max;
             ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
           }
+		  var custfirm = document.getElementById ("custfirm").checked;
 		  if(custfirm){
 			if(ef.group=="AMP" && (ef.ver&0xf0)){
 				ef.param[7].max=bampcab[(v>=2)?1:0].max;
@@ -2472,6 +2473,7 @@ function MidiIf(ma){
         this.devstr="60b";
         this.instSet();
         document.getElementById("device").innerHTML="MS-60B";
+	var custfirm = document.getElementById ("custfirm").checked;
 		if(custfirm){
 			document.getElementById("effects").rows[4].style.display="";
 			document.getElementById("effects").rows[5].style.display="";
@@ -2481,6 +2483,7 @@ function MidiIf(ma){
 		}
         for(var id in effectlist){
           var ef=effectlist[id];
+		  var custfirm = document.getElementById ("custfirm").checked;
 		  if(custfirm){
 			if(ef.group=="AMP" && (ef.ver&0xf)){
 				ef.param[7].max=gampcab[(v>=3)?1:0].max;
@@ -2500,6 +2503,7 @@ function MidiIf(ma){
         document.getElementById("device").innerHTML="MS-70CDR";
         document.getElementById("effects").rows[4].style.display="";
         document.getElementById("effects").rows[5].style.display="";
+		var custfirm = document.getElementById ("custfirm").checked;
 		if(custfirm){
 		  for(var id in effectlist){
 			var ef=effectlist[id];
