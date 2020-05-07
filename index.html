@@ -2390,22 +2390,22 @@ function MidiIf(ma){
       }
       var el=document.getElementById("e_"+id);
       if(el){
-		var custfirm = document.getElementById ("custfirm").checked;
-		if(custfirm){
-			if(v>this.version){
-				effectlist[id].install=-2;
-				document.getElementById("e_"+id).classList.add("notinstall");
-			}
-		} else {
-			if(v==0||v>this.version){
+	var custfirm = document.getElementById ("custfirm").checked;
+	if(custfirm){
+		if(v>this.version){
 			effectlist[id].install=-2;
 			document.getElementById("e_"+id).classList.add("notinstall");
-			}
-			else if(this.devid!=0x58){
-				effectlist[id].install=1;
-				document.getElementById("e_"+id).classList.add("install");
-			}
 		}
+	} else {
+		if(v==0||v>this.version){
+			effectlist[id].install=-2;
+			document.getElementById("e_"+id).classList.add("notinstall");
+		}
+		else if(this.devid!=0x58){
+			effectlist[id].install=1;
+			document.getElementById("e_"+id).classList.add("install");
+		}
+	}
       }
     }
   }
@@ -2459,13 +2459,13 @@ function MidiIf(ma){
             ef.param[7].max=gampcab[(v>=3)?1:0].max;
             ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
           }
-		  var custfirm = document.getElementById ("custfirm").checked;
-		  if(custfirm){
-			if(ef.group=="AMP" && (ef.ver&0xf0)){
-				ef.param[7].max=bampcab[(v>=2)?1:0].max;
-				ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
-			}
-		  }
+	  var custfirm = document.getElementById ("custfirm").checked;
+	  if(custfirm){
+		if(ef.group=="AMP" && (ef.ver&0xf0)){
+			ef.param[7].max=bampcab[(v>=3)?1:0].max;
+			ef.param[7].disp=bampcab[(v>=3)?1:0].disp;
+		}
+	  }
         }
         break;
       case 0x5f:
@@ -2474,22 +2474,22 @@ function MidiIf(ma){
         this.instSet();
         document.getElementById("device").innerHTML="MS-60B";
 	var custfirm = document.getElementById ("custfirm").checked;
-		if(custfirm){
-			document.getElementById("effects").rows[4].style.display="";
-			document.getElementById("effects").rows[5].style.display="";
-		} else {
-			document.getElementById("effects").rows[4].style.display="none";
-			document.getElementById("effects").rows[5].style.display="none";
-		}
+	if(custfirm){
+		document.getElementById("effects").rows[4].style.display="";
+		document.getElementById("effects").rows[5].style.display="";
+	} else {
+		document.getElementById("effects").rows[4].style.display="none";
+		document.getElementById("effects").rows[5].style.display="none";
+	}
         for(var id in effectlist){
           var ef=effectlist[id];
-		  var custfirm = document.getElementById ("custfirm").checked;
-		  if(custfirm){
-			if(ef.group=="AMP" && (ef.ver&0xf)){
-				ef.param[7].max=gampcab[(v>=3)?1:0].max;
-				ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
-			}
-		  }
+	  var custfirm = document.getElementById ("custfirm").checked;
+	  if(custfirm){
+		if(ef.group=="AMP" && (ef.ver&0xf)){
+			ef.param[7].max=gampcab[(v>=2)?1:0].max;
+			ef.param[7].disp=gampcab[(v>=2)?1:0].disp;
+		}
+	  }
           if(ef.group=="AMP" && (ef.ver&0xf0)){
             ef.param[7].max=bampcab[(v>=2)?1:0].max;
             ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
@@ -2503,19 +2503,19 @@ function MidiIf(ma){
         document.getElementById("device").innerHTML="MS-70CDR";
         document.getElementById("effects").rows[4].style.display="";
         document.getElementById("effects").rows[5].style.display="";
-		var custfirm = document.getElementById ("custfirm").checked;
-		if(custfirm){
-		  for(var id in effectlist){
-			var ef=effectlist[id];
-			if(ef.group=="AMP" && (ef.ver&0xf)){
-				ef.param[7].max=gampcab[(v>=3)?1:0].max;
-				ef.param[7].disp=gampcab[(v>=3)?1:0].disp;
-			}
-			if(ef.group=="AMP" && (ef.ver&0xf0)){
-				ef.param[7].max=bampcab[(v>=2)?1:0].max;
-				ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
-			}
-		  }
+	var custfirm = document.getElementById ("custfirm").checked;
+	if(custfirm){
+	  for(var id in effectlist){
+		var ef=effectlist[id];
+		if(ef.group=="AMP" && (ef.ver&0xf)){
+			ef.param[7].max=gampcab[(v>=2)?1:0].max;
+			ef.param[7].disp=gampcab[(v>=2)?1:0].disp;
+		}
+		if(ef.group=="AMP" && (ef.ver&0xf0)){
+			ef.param[7].max=bampcab[(v>=2)?1:0].max;
+			ef.param[7].disp=bampcab[(v>=2)?1:0].disp;
+		}
+	  }
         }
         break;
       }
