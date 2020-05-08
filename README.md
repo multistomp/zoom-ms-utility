@@ -1,9 +1,19 @@
 ## This is a fork of the original zoom-ms-utility to add support for custom firmware
 
-Just like the original, you can [open this version in your browser](https://multistomp.github.io/zoom-ms-utility/) and edit your pedal's settings.
+Just like the original, you can **[open this version in your browser](https://multistomp.github.io/zoom-ms-utility/)** and edit your pedal's settings.
+
+### Helpful links
+* [Zoom firmware editor](https://github.com/Barsik-Barbosik/Zoom-Firmware-Editor/releases) See also: updated version [here](https://github.com/Barsik-Barbosik/Zoom-Firmware-Editor/issues/11#issuecomment-518024269), but you need [Java RE](https://java.com/en/download/manual.jsp).
+* [Spreadsheet of all Zoom Multistomp effects](https://docs.google.com/spreadsheets/d/1BDs6DJQ8sOdphMpYnsSdE93XV1XclFTzD217144fj5w/edit#gid=0) Helpful for choosing what to put on your pedal
+* [All Zoom Multistomp effects in folders](https://drive.google.com/drive/folders/1EUGUlYTpRFsKdHWocAjuJHyPsRpexDjH?usp=sharing) (select all, right click, download)
+* [Reddit community with patches threads, etc.](https://www.reddit.com/r/zoommultistomp/)
+* [MS-50G Firmware](https://www.zoom-na.com/products/effects-preamps/multistomp/zoom-ms-50g-multistomp-guitar-pedal#downloads)
+* [MS-60B Firmware](https://www.zoom-na.com/products/effects-preamps/multistomp/zoom-ms-60b-multistomp-bass-pedal#downloads)
+* [MS-70CDR Firmware](https://www.zoom-na.com/products/effects-preamps/multistomp/zoom-ms-70cdr-multistomp-chorus-delay-reverb-pedal#downloads)
+* [MS-50G effects not availabe in firmware](https://github.com/UnnoTed/zoom-ms50g), click "Clone or Download" in the upper right, click "Download Zip" then extract the folder "efx\_1\_00" from the .zip file you just downloaded.
 
 ### Known issues
-* If you don't have all the Amp models installed, you will get some odd behaviour when setting the Cab for the Amp in the Utility. When the Utility tries to set a Cab that doesn't exist on the Pedal, the Pedal will set the Cab to 'None'. Recommend using the Pedal's knobs to set your Cab in the Amp sims, unless you have all the Amps installed. The proper way to fix this would be to scan the Pedal for what Amps are installed and then limit the Cab selection to those Amps, but that is beyond my skill level.
+* If you don't have all the Amp models installed, you will get some odd behaviour when setting the Cab for the Amp in the Utility. When the Utility tries to set a Cab that doesn't exist on the Pedal, the Pedal will set the Cab to 'None'. I recommend installing all the Amps, or if you only install some, you'll need to use the Pedal's knobs to set your Cab in the Amp sims.
 * Using any of the 17 updated bass effects from the B1Xon/B1on (which are not found on the MS-60B) is not supported. [See this spreadsheet for details](https://docs.google.com/spreadsheets/d/1BDs6DJQ8sOdphMpYnsSdE93XV1XclFTzD217144fj5w/edit#gid=0).
 
 ### Original version
