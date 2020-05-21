@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zoom MS-50G / 60B / 70CDR Patch Editor</title>
 <link rel="icon" href="./images/icon.png" />
 <!--<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">-->
@@ -2832,8 +2833,8 @@ function Init(){
       function(ma){midiif=new MidiIf(ma);},
       function(e){
         AlertMsg("requestMIDIAccess Error.<br/><br/><img src='./images/mididisableicon.png' align='left' style='margin:5px'/>"
-        + "If an icon of keyboard with 'x' mark is displayed at the right end of the address bar, "
-        + "click the icon, clear setting, reload and allow 'use MIDI device'."
+        + "If a keyboard icon with 'x' mark is displayed at the right end of the address bar, "
+        + "click the icon, clear the setting, reload the page, and allow 'Use MIDI devices'."
         );
       },
     );
@@ -4002,6 +4003,7 @@ function DispPatch(patch){
     if(ef){
       for(p=0;p<9;++p){
         cell=tab.rows[n].cells[p+1];
+		cell2=tab.rows[n].cells[p+2];
         var s="f"+(n+1)+"p"+(p+1);
         var el=document.getElementById(s+"l");
         var ek=document.getElementById(s+"k");
@@ -4071,12 +4073,18 @@ function DispPatch(patch){
             if(es.setValue)
               es.setValue(v);
           }
+		//add class to td/cell so we know if the td/cell has a param
+		cell2.classList.add("hasparam");
+		cell2.classList.remove("noparam");
         }
         else{
           el.innerHTML="";
           ek.style.display="none";
           ev.style.display="none";
           es.style.display="none";
+		  //add class to td/cell so we know if the td/cell doesn't have a param
+		  cell2.classList.add("noparam");
+		  cell2.classList.remove("hasparam");
         }
       }
     }
@@ -4434,7 +4442,7 @@ function ImportPatch(){
 function ImportText(){
   var tar=document.getElementById((currentpatch+1)+"nam");
   var panel=document.getElementById("textareabase");
-  document.getElementById("textareamsg").innerHTML="Import Patch from Text: In the box below, paste the text from 'Show Patch as text'<br/> or from guitarpatches.com's zoom MS-50G patch page texts or from BBS/forum/reddit posts.";
+  document.getElementById("textareamsg").innerHTML="Import patch from text: In the box below, paste the text code. You can get these codes from this editor ('Show patch as text') or from guitarpatches.com's zoom MS-50G patch page or from BBS/forum/reddit posts.";
   document.getElementById("textareatext").value="";
   var rc=tar.getBoundingClientRect();
   panel.style.display="block";
@@ -4567,9 +4575,9 @@ window.addEventListener("load",Init);
       <div id="version" style="font-size:12px;vertical-align:top">v1.0.1</div>
       <div id="subtitle">Patch editor for ZOOM MS-50G / 60B / 70CDR MultiStomp guitar/bass pedal</div>
       <div class="info">
-		  <span id="github" style="text-decoration:underline;cursor:pointer">Link to original source code</span>&nbsp;|&nbsp;
+		  <span id="github" style="text-decoration:underline;cursor:pointer">Link to original source code</span><span>&nbsp;|&nbsp;</span>
 		  <span id="github4" style="text-decoration:underline;cursor:pointer">Link to forked source code</span>
-		  <div style="font-size:2em; margin-top:10px;"> 
+		  <div id="colorswitcher"> 
 			<a href="#" onclick="setActiveStyleSheet('blue'); return false;">Blue</a>&nbsp;|&nbsp;
 			<a href="#" onclick="setActiveStyleSheet('gray'); return false;">Gray</a>&nbsp;|&nbsp;
 			<a href="#" onclick="setActiveStyleSheet('green'); return false;">Green</a>&nbsp;|&nbsp;
@@ -4664,6 +4672,7 @@ window.addEventListener("load",Init);
         </tr>
       </table>
     </div>
+	<div id="effectswrapper">
     <div id="dspgraph"><div></div><div></div><div></div><div></div><div></div><div></div></div>
 <!--    <canvas id="dspgraph" width="20" height="200"></canvas>-->
     <table id="effects">
@@ -4741,6 +4750,7 @@ window.addEventListener("load",Init);
     </table>
     <div id="popupeditpanel" class="popup"></div>
   </div>
+  </div> <!-- #effectswrapper -->
 
   <ul id="popuppatch" class="popup">
     <li><a onclick="PopupPatchOverwrite()">Overwrite</a></li>
@@ -4755,13 +4765,13 @@ window.addEventListener("load",Init);
     <li><a onclick="PopupPatchDelete()">Delete</a></li>
     <li><a onclick="PopupPatchRename()">Rename</a></li>
     <li><hr/></li>
-    <li><a onclick="ExportPatch()">Export Patch to file</a></li>
-    <li><a onclick="ImportPatch()">Import Patch from file</a></li>
+    <li><a onclick="ExportPatch()">Export patch to file</a></li>
+    <li><a onclick="ImportPatch()">Import patch from file</a></li>
     <li><hr/></li>
-    <li><a onclick="ShowPatch()">Show Patch as text</a></li>
-    <li><a onclick="ImportText()">Import Patch from text</a><li>
+    <li><a onclick="ShowPatch()">Show patch as text</a></li>
+    <li><a onclick="ImportText()">Import patch from text</a><li>
       <li><hr/></li>
-    <li><a onclick="SavePatchToDevice()">Save Patch to Device</a></li>
+    <li><a onclick="SavePatchToDevice()">Save patch to device</a></li>
     <li><hr/></li>
     <li><a onclick="PopupPatchCancel2()">Cancel</a></li>
   </ul>
@@ -4769,9 +4779,9 @@ window.addEventListener("load",Init);
   <ul id="popupeffect" class="popup">
     <li><a onclick="PopupEffectReplace()">Add/Replace</a></li>
     <li><hr/></li>
-    <li><a onclick="PopupEffectInsert()">Insert Space</a></li>
-    <li><a onclick="PopupEffectUp()">Move Up</a></li>
-    <li><a onclick="PopupEffectDown()">Move Down</a></li>
+    <li><a onclick="PopupEffectInsert()">Insert space</a></li>
+    <li><a onclick="PopupEffectUp()">Move up</a></li>
+    <li><a onclick="PopupEffectDown()">Move down</a></li>
     <li><a onclick="PopupEffectDelete()">Delete</a></li>
     <li><hr/></li>
     <li><a onclick="PopupEffectCancel()">Cancel</a></li>
@@ -4861,7 +4871,7 @@ window.addEventListener("load",Init);
 
   <div id="usagebase" class="modalbase">
     <div id="usagepanel">
-      <button onclick="ShowDoc('en')" style="width:80px">English</button> | <button onclick="ShowDoc('ja')" style="width:80px">Japanese</button>
+      <button onclick="ShowDoc('en')" style="width:80px" id="usageen">English</button> | <button onclick="ShowDoc('ja')" id="usageja" style="width:80px">Japanese</button> | <button onclick="Usage()" id="usagecancel">Close</button>
       <div id="usagescr">
         <div class="doc_en">
           <h3>What's new v1.0.1</h3>
@@ -5050,8 +5060,8 @@ window.addEventListener("load",Init);
             </li>
           </ul>
         </div>
+		<button onclick="Usage()" id="usagecancel">Close</button>
       </div>
-      <button onclick="Usage()">close</button>
     </div>
   </div>
 
@@ -5059,7 +5069,7 @@ window.addEventListener("load",Init);
     <div id="textareapanel">
       <div id="textareamsg"></div>
       <textarea id="textareatext"></textarea><br/>
-      <button id="texareacancel" onclick="this.parentNode.parentNode.style.display='none'">Cancel</button> <button id="textareaok">Ok</button>
+      <button id="textareacancel" onclick="this.parentNode.parentNode.style.display='none'">Cancel</button> <button id="textareaok">Ok</button>
     </div>
   </div>
 
