@@ -666,3 +666,284 @@ webaudio-switch{
   background:linear-gradient(#ddebff,#b8c7e8);
   box-shadow:1px 1px 1px 1px rgba(0,0,0,0.4);
 }
+
+
+/* okay buttons */
+#alertok, #confirmok, #inputok, #textareaok, #inputcancel, #textareacancel {
+	width:120px;
+	height:30px;
+}
+#usagecancel, #usageen, #usageja {
+	width:70px;
+	height:30px;
+}
+#colorswitcher {
+	font-size:2em; margin-top:20px;
+  }
+/* minor fix for background shading */
+@media screen and (max-width: 1150px) {
+	.modalbase {
+		position:fixed;
+	}
+  }
+
+/* mobile theme */
+@media screen and (max-width: 768px) {
+	
+  /* HEADER ------------------------------------------------ */
+  #colorswitcher {
+	font-size:1.5em; margin-top:30px;
+  }
+  #g200kglogo, #subtitle, #version, .info span {
+	display:none !important;
+  }
+  #title {
+	left: 5px;
+  }
+  #header .info {
+	left: 10px;
+	right: auto;
+  }
+  #header {
+	width:100%;
+	position:relative;
+	display:inline-block;
+	left:auto;
+	right:auto;
+	top:auto;
+	bottom:auto;
+	border:0;
+	margin:0;
+	padding:0;
+  }
+
+  /* LAYOUT ------------------------------------------------- */
+  html {overflow:auto;}
+  body {
+	position:fixed;
+	overflow:auto;
+  }
+  #base {
+	position:fixed;
+	bottom:auto;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	margin:0;
+	padding:0;
+	border: 0;
+  }
+  #mainmenu, #patchesbase, #effectswrapper {
+	position:relative;
+	display:inline-block;
+	clear:both;
+	width:100%;
+	left:auto;
+	right:auto;
+	top:auto;
+	bottom:auto;
+  }
+  #mainmenu ul li {
+	display:inline-block;
+	width:auto;
+	margin:2px 0px;
+  }
+  #mainmenu ul li:nth-of-type(2) {
+	display:block;
+  }
+  #mainmenu ul li:nth-of-type(2) div {
+	display:inline-block;
+	width:auto !important;
+	padding-right:5px;
+  }
+  #mainmenu ul li:nth-of-type(3) {
+	display:none;
+  }
+  
+  /* PATCHES PANEL ----------------------------- */
+  #patches {
+	width:100%;
+  }
+  #patches button {
+	width:30%;
+	height: 30px;
+	margin:0;
+	padding:0;
+  }
+  .pnam {
+	width:70%;
+	height: 30px;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	word-break:break-word;
+	border-top:1px solid #8ab;
+	border-bottom:1px solid #8ab;
+  }
+  #patchesbase {
+	border:0;
+	margin:0;
+	padding:0;
+  }
+  
+  /* EFFECTS GRID ---------------------------- */
+  #effectswrapper {
+	border:0;
+	margin:0;
+	padding:0;
+  }
+  #effects .fnam {
+	  width:auto;
+  }
+  #effects .ftxt {
+	  display:block;
+	  position:unset;
+	  bottom:unset;
+	  right:unset;
+  }
+  #effects .pcell {
+	  flex-direction:column;
+	  height:70px;
+	  text-align:center;
+  }
+  /* effects level text */
+  #effects td div div .param {
+	  width:auto;
+	  height:auto;
+	  margin:0 2px;
+	  padding:0;
+  }
+  /* effect name */
+  #effects .pcell div div:nth-of-type(2) {
+	  margin:3px 0 0 0;
+	  padding:0;
+	  text-align:center;
+  }
+  button.fnum, td.fnam, #effects td {
+	  height: 70px;
+  }
+  #dspgraph {
+	top:auto;
+	left:5px;
+	margin:0;
+	padding:0;
+	/*border: 0;*/
+	box-shadow:none;
+	display:inline-block;
+  }
+  #effects {
+	top:auto;
+	left:20px;
+	margin:0;
+	padding:0;
+	border: 0;
+	box-shadow:none;
+	display:inline-block;
+  }
+  #effects .fimg {
+	  display:none;
+  }
+  .pfocus {
+	border:none;
+	/*background-color:rgba(0,0,0,0.2);*/
+  }
+  
+  /* EFFECT PANEL POPUP ------------------------------------- */
+  #effectpanel {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	box-shadow: none;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	overflow: auto;
+  }
+  #effectpanelscr {
+	width: 100%;
+	height: 80%;
+	box-shadow: none;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+  }
+  #effectpanellist {
+	width: 100%;
+  }
+  .efgrp {
+	width: 100%;
+  }
+  #effectpanellist table tbody tr:nth-child(even) {
+	background-color:#999;
+  }
+
+  /* MESSAGE POPUPS */
+  .modalbase {
+	position:fixed;
+  }
+  #alertbase, #waitbase, #confirmbase, #inputbase, #textareabase, #usagebase, #splashbase, #effectpanelbase {
+	height:100% !important;
+	width:100% !important;
+	padding:0 !important;
+	margin:0 !important;
+  }
+
+  #alertpanel, #waitpanel, #confirmpanel, #textareapanel, #usagepanel, #splashpanel {
+	padding:20px;
+	width: auto;
+  }
+  #alertpanel, #waitpanel, #confirmpanel, #textareapanel {
+	height: fit-content;
+  }
+  #splashpanel, #usagepanel {
+	height:80%;
+  }
+  #textareapanel textarea {
+	width:90%;
+  }
+  #alertmsg, #waitmsg, #confirmmsg, #inputmsg, #usagescr, #splashmsg {
+	display:block !important;
+	width:100% !important;
+	height:auto !important;
+  }
+  #usagepanel, #usagescr, #usagescr div, #splashpanel {
+	overflow:auto !important;
+  }
+  #popupeffect, #popuppatch, #popuppatch2 {
+	  position:fixed;
+  }
+  #effects td.noparam .pcell {
+	  background: linear-gradient(0deg, rgba(31,31,31,0.5) 0%, rgba(75,75,75,0.5) 50%, rgba(139,139,139,0.5) 100%);
+  }
+}
+
+/* mobile theme for even smaller screens, move the knobs below the names*/
+@media screen and (max-width: 600px) {
+  #effects td {
+	  display:inline-block;
+	  height:70px;
+	  width:60px;
+  }
+  #effects td.noparam {
+	  display:none;
+  }
+  #effects td.fnam {
+	  width:95%;
+	  height:auto;
+	  margin-top:10px;
+  }
+}
+
+/* mobile theme for even smaller screens, make the patches as a single column*/
+@media screen and (max-width: 425px) {
+  #patches button, #patches .pnam {
+	  height: 40px;
+  }
+}
+
+/* mobile theme for even smaller screens, make the patches as a single column*/
+@media screen and (max-width: 320px) {
+  #patches button, #patches .pnam {
+	  height: 50px;
+  }
+}
