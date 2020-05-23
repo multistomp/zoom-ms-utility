@@ -665,6 +665,24 @@ webaudio-switch{
   box-shadow:1px 1px 1px 1px rgba(0,0,0,0.4);
 }
 
+/* okay buttons */
+#alertok, #confirmok, #inputok, #textareaok, #inputcancel, #textareacancel {
+	width:120px;
+	height:30px;
+}
+#usagecancel, #usageen, #usageja {
+	width:70px;
+	height:30px;
+}
+#colorswitcher {
+	font-size:2em; margin-top:20px;
+  }
+/* minor fix for background shading */
+@media screen and (max-width: 1150px) {
+	.modalbase {
+		position:fixed;
+	}
+  }
 
 /* mobile theme */
 @media screen and (max-width: 768px) {
